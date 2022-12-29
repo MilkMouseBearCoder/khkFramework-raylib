@@ -32,8 +32,6 @@
 #include<File.h>
 #include<KeyButton.h>
 
-using namespace std;
-
 struct BaseApp{
   BaseApp(int _window_width = 800,
 	  int _window_height = 450,
@@ -42,8 +40,8 @@ struct BaseApp{
 
   v2 ClampValue(v2 value, v2 min, v2 max);
   void SetGameScreen(int _game_screen_width, int _game_screen_height);
-  static void AddKeyButton(string action_name, int key_code);
-  static Key* GetKeyButton(string action_name);
+  static void AddKeyButton(std::string action_name, int key_code);
+  static Key* GetKeyButton(std::string action_name);
   static int SettingCallback(IniDispatch *dispatch, void *v_null);
   void Init(int texture_filter_mode = FILTER_POINT);
   void Update();
@@ -54,7 +52,7 @@ protected:
   int target_fps = 60;
   int window_width = 800;
   int window_height = 450;
-  string title = "My Game";
+  std::string title = "My Game";
   bool is_resizable = true;
   int game_screen_width = window_width;
   int game_screen_height = window_height;
@@ -66,7 +64,7 @@ protected:
   float scale = 0.0f;
   RenderTexture2D blank_renderer;
   CCamera *camera;
-  static map<string, Key*> key_map;
+  static std::map<std::string, Key*> key_map;
 
   virtual void OnInit();
   virtual void OnUpdate();
